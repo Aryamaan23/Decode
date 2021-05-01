@@ -4,7 +4,7 @@ Link to deployed URL - [Decode](https://decoding.surge.sh/) & [Backend API](http
 
 [Decode](https://decoding.surge.sh/) is a platform which converts code into easy to understand language.
 
-![Decode architecture]
+![Decode architecture](mockups/flow.png)
 
 ## Project Description
 
