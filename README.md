@@ -34,7 +34,7 @@ User will also get insight to memory and time consumption of the program.
 
 ## Presentation
 
-[PPT]
+[PPT](https://docs.google.com/presentation/d/1R767ack-2fZx-W1FVFHRi0XrrJph0PCmLfz5FjJ0Zzk/edit#slide=id.gc6f980f91_0_0)
 
 ## Video
 
