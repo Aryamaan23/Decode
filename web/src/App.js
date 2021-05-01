@@ -1,25 +1,50 @@
 import SplitterLayout from "react-splitter-layout";
 import Compile from "./components/Compile";
-import CodeEditor from "./components/Editor";
+import Editor from "@monaco-editor/react";
 import Navbar from "./components/Navbar";
 import PseudoCode from "./components/PseudoCode";
 import Warnings from "./components/Warnings";
+import { useState } from "react";
 
 function App() {
+  const options = {
+    selectOnLineNumbers: true,
+    fontSize: 15,
+    formatOnType: true,
+    tabSize: 4,
+  };
+
+  const initialCode = "# Add Some Python Code";
+
+  const [code, setCode] = useState(initialCode);
+
+  function handleEditorChange(value, event) {
+    setCode(value);
+    console.log("here is the current model value:", value);
+  }
+
   return (
     <div className="h-screen">
       <Navbar />
       <SplitterLayout>
         <div>
-          <PseudoCode />
+          <PseudoCode code={code} />
 
-          <Warnings />
+          <Warnings code={code} />
         </div>
 
         <div>
-          <CodeEditor />
+          <Editor
+            className="p-0.5"
+            height="60vh"
+            defaultLanguage="python"
+            defaultValue={initialCode}
+            options={options}
+            theme="vs-dark"
+            onChange={handleEditorChange}
+          />
 
-          <Compile />
+          <Compile code={code} />
         </div>
       </SplitterLayout>
     </div>

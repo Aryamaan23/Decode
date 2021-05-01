@@ -5,11 +5,11 @@ export default function Navbar() {
     <div>
       <div className="h-16">
         <nav className="flex justify-between py-1 items-center">
-          <p className="text-2xl font-bold text-grey-800">Decode</p>
+          <p className="text-2xl font-bold text-grey-800">CodeX</p>
           <div className="flex">
             <a
               href="#"
-              className="rounded bg-blue-400 round-lg hover:bg-blue-700 text-white py-2 px-2"
+              className="rounded bg-gray-700 round-lg hover:bg-indigo-700 text-white py-2 px-2"
             >
               Share Your Code
             </a>
