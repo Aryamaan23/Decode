@@ -1,5 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from .routes.compile import router as CodeCompileRouter
+from .routes.convertPseudo import router as ConvertCodeIntoPseudoRouter
+from .routes.translatePseudo import router as TranslateRouter
 
 app = FastAPI()
 
