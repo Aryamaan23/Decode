@@ -1,10 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
+import Loader from "react-loader-spinner";
 
 export default function Compile({ code }) {
   const [isLoading, setLoading] = useState(false);
   const [inp, setInput] = useState("");
   const [output, setOutput] = useState("");
+  const [memoryused, setMemoryUsed] = useState("");
+  const [timeused, setTimeUsed] = useState("");
 
   const onSubmitCode = async (e) => {
     try {
@@ -27,9 +30,11 @@ export default function Compile({ code }) {
         res.data.run_status.stderr !== undefined &&
         res.data.run_status.stderr === "" &&
         res.data.compile_status === "OK"
-      )
+      ) {
         setOutput(res.data.run_status.output);
-      else if (res.data.compile_status !== "OK")
+        setMemoryUsed(res.data.run_status.memory_used);
+        setTimeUsed(res.data.run_status.time_used);
+      } else if (res.data.compile_status !== "OK")
         setOutput(res.data.compile_status);
       else setOutput(res.data.run_status.stderr);
       // console.log(res.data.run_status.stderr);
@@ -82,15 +87,41 @@ export default function Compile({ code }) {
 
       <div>
         {isLoading ? (
-          <div>loading...</div>
+          <Loader
+            className="pl-20"
+            type="Rings"
+            color="#00BFFF"
+            height={80}
+            width={80}
+          />
         ) : (
-          <button
-            onClick={onSubmitCode}
-            class="ml-8 bg-green-700 h-10 text-white active:bg-green-300 font-medium uppercase text-sm px-6 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-            type="button"
-          >
-            Compile and Test
-          </button>
+          <div className="space-x-32">
+            <button
+              onClick={onSubmitCode}
+              className=" ml-8 bg-green-700 h-10 text-white active:bg-green-300 font-medium uppercase text-sm px-6 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+              type="button"
+            >
+              Compile and Test
+            </button>
+            {memoryused == "" ? (
+              <div></div>
+            ) : (
+              <div className="space-x-20 inline-block">
+                <div className="inline-block text-red-700 font-medium">
+                  Memory Used
+                  <div className="text-2xl text-black font-normal">
+                    {memoryused} KB
+                  </div>
+                </div>
+                <div className="inline-block text-red-700 font-medium">
+                  Time Used
+                  <div className="text-2xl text-black font-normal">
+                    {timeused} ms
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         )}
       </div>
     </div>

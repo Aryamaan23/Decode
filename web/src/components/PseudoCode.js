@@ -2,10 +2,12 @@ import { VscRunAll } from "react-icons/vsc";
 import React, { useState } from "react";
 import axios from "axios";
 import Flowchart from "react-simple-flowchart";
+import Loader from "react-loader-spinner";
 
 export default function CodeEditor({ code }) {
   const [pseudo, setPseudo] = useState("Click on Show Pseudocode Button");
   const [isLoading, setLoading] = useState(false);
+  const [isLoadingFlow, setLoadingFlow] = useState(false);
 
   const [flow, setFlow] = useState("");
 
@@ -14,7 +16,7 @@ export default function CodeEditor({ code }) {
   const generateFlow = async (e) => {
     try {
       e.preventDefault();
-      setLoading(true);
+      setLoadingFlow(true);
 
       const res = await axios.post(
         "https://pseudo-x.herokuapp.com/api/v1/flow/",
@@ -24,12 +26,12 @@ export default function CodeEditor({ code }) {
         }
       );
 
-      setLoading(false);
+      setLoadingFlow(false);
       setFlow(res.data);
 
       console.log(res.data);
     } catch (err) {
-      setLoading(false);
+      setLoadingFlow(false);
       console.log(err);
     }
   };
@@ -135,15 +137,26 @@ export default function CodeEditor({ code }) {
       <div className="" role="alert">
         <div class="bg-yellow-500 text-white flex justify-between font-bold rounded-t px-4 py-2">
           <div> Generate Flowchart</div>
-          <div className="px-2 py-1 pl-3 bg-gray-600 hover:bg-gray-400 rounded-md">
-            <div onClick={generateFlow} className="p-0 m-0">
+          <div className="px-2 pl-3 bg-gray-600 hover:bg-gray-400 rounded-md">
+            <button
+              onClick={generateFlow}
+              className="pt-1 m-0 outline-none focus:outline-none"
+            >
               <VscRunAll size="22" />
-            </div>
+            </button>
           </div>
         </div>
         <div class="border border-t-0  rounded-b h-auto bg-yellow-100 px-4 py-3 text-green-800">
           {flow == "" ? (
             <div>Click on Generate Flowchart Button</div>
+          ) : isLoadingFlow ? (
+            <Loader
+              className="pl-72"
+              type="Rings"
+              color="#00BFFF"
+              height={80}
+              width={80}
+            />
           ) : (
             <Flowchart
               className="pb-5"
@@ -293,43 +306,42 @@ export default function CodeEditor({ code }) {
               <option>yi</option>
               <option>yo</option>
               <option>zu</option>
-              
-
             </select>
           </div>
 
-          <div className="pt-0.5 px-4 bg-green-700 rounded-md">
+          <button className="outline-none focus:outline-none pb-0.5 px-4 bg-green-700 rounded-md">
             <div className="" onClick={translate}>
               submit
             </div>
-          </div>
+          </button>
 
           <div></div>
           <div></div>
 
-          <div className="px-2 py-1 pl-3 bg-gray-600 hover:bg-gray-400 rounded-md">
-            <div onClick={onSubmitCode} className="p-0 m-0">
+          <div className="px-2 pl-3 bg-gray-600 hover:bg-gray-400 rounded-md">
+            <button
+              onClick={onSubmitCode}
+              className="pt-1 m-0 outline-none focus:outline-none"
+            >
               <VscRunAll size="22" />
-            </div>
+            </button>
           </div>
         </div>
 
         <div class="border border-t-0  rounded-b h-auto bg-green-100 px-4 py-3 text-green-800">
-          <div className="whitespace-pre-wrap">{pseudo}</div>
+          {isLoading ? (
+            <Loader
+              className="pl-72"
+              type="Rings"
+              color="#00BFFF"
+              height={80}
+              width={80}
+            />
+          ) : (
+            <div className="whitespace-pre-wrap">{pseudo}</div>
+          )}
         </div>
       </div>
-      {isLoading ? (
-        <div>loading...</div>
-      ) : (
-        // <button
-        //   onClick={onSubmitCode}
-        //   class="mt-3 bg-green-500 h-10 text-white active:bg-green-300 font-medium uppercase text-sm px-6 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-        //   type="button"
-        // >
-        //   Convert Into PseudoCode
-        // </button>
-        <div></div>
-      )}
     </div>
   );
 }

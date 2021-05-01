@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BsCodeSlash } from "react-icons/bs";
 import axios from "axios";
+import Loader from "react-loader-spinner";
 
 export default function Navbar({ code }) {
   const [isLoading, setLoading] = useState(false);
@@ -53,18 +54,18 @@ export default function Navbar({ code }) {
               </a>
             </div>
           )}
-          <div className="mx-32 my-1 md:mx-10 md:my-2  rounded-md  bg-indigo-400">
-            {isLoading ? (
-              <div>loading...</div>
-            ) : (
+          {isLoading ? (
+            <Loader className="" type="Rings" color="#00BFFF" height={55} />
+          ) : (
+            <div className="mx-32 my-1 md:mx-10 md:my-2  rounded-md  bg-indigo-400">
               <button
                 onClick={shareCode}
                 className="flex-no-grow flex-no-shrink relative py-2 px-10 leading-normal text-white no-underline flex items-center hover:bg-grey-dark"
               >
                 Share
               </button>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </nav>

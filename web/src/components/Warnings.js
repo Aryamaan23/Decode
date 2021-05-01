@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { VscRunAll } from "react-icons/vsc";
+import Loader from "react-loader-spinner";
 
 export default function Warnings({ code }) {
   const [warnings, setWarnings] = useState("Click on Show Warnings Button");
@@ -43,29 +44,29 @@ export default function Warnings({ code }) {
       <div role="alert">
         <div class="bg-red-500 text-white flex justify-between font-bold rounded-t px-4 py-2">
           <div>Code Suggestions</div>
-          <div className="px-2 py-1 pl-3 bg-gray-600 hover:bg-gray-400 rounded-md">
-            <div onClick={onSubmitCode} className="p-0 m-0">
+          <div className="px-2 pl-3 bg-gray-600 hover:bg-gray-400 rounded-md">
+            <button
+              onClick={onSubmitCode}
+              className="pt-1 mb-1 m-0 outline-none focus:outline-none"
+            >
               <VscRunAll size="22" />
-            </div>
+            </button>
           </div>
         </div>
         <div class="border border-t-0  rounded-b h-auto bg-red-100 px-4 py-3 text-red-800">
-          <div className="whitespace-pre-wrap">{warnings}</div>
+          {isLoading ? (
+            <Loader
+              className="pl-72"
+              type="Rings"
+              color="#00BFFF"
+              height={80}
+              width={80}
+            />
+          ) : (
+            <div className="whitespace-pre-wrap">{warnings}</div>
+          )}
         </div>
       </div>
-
-      {isLoading ? (
-        <div>loading...</div>
-      ) : (
-        // <buttons
-        //   onClick={onSubmitCode}
-        //   className="mt-5 bg-red-500 h-10 text-white active:bg-green-300 font-medium uppercase text-sm px-6 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-        //   type="button"
-        // >
-        //   Show Warnings
-        // </buttons>
-        <div></div>
-      )}
     </div>
   );
 }
