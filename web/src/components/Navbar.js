@@ -20,7 +20,7 @@ export default function Navbar({ code }) {
       );
 
       setLoading(false);
-      setUrl("https://coderx.surge.sh/" + res.data.id);
+      setUrl("https://decoding.surge.sh/" + res.data.id);
 
       console.log(res.data);
     } catch (err) {
@@ -37,7 +37,7 @@ export default function Navbar({ code }) {
           className="pt-2 pl-4 text-gray-100 font-semibold"
         />
         <div className="flex-no-grow mt-1 font-bold text-2xl flex-no-shrink relative py-4 px-4 leading-normal text-white no-underline flex items-center hover:bg-grey-dark">
-          CodeX
+          Decode
         </div>
       </div>
       <div className="lg:flex lg:items-stretch lg:flex-no-shrink lg:flex-grow">
