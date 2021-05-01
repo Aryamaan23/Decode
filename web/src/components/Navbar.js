@@ -5,7 +5,7 @@ export default function Navbar() {
     <div>
       <div className="h-16">
         <nav className="flex justify-between py-1 items-center">
-          <p className="text-2xl font-bold text-grey-800">CodeX</p>
+          <p className="text-2xl font-bold text-grey-800">Decode</p>
           <div className="flex">
             <a
               href="#"

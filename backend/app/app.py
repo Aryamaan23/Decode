@@ -19,7 +19,7 @@ app.add_middleware(
 app.include_router(CodeCompileRouter, tags=["Code Compile"], prefix="/api/v1/compile")
 app.include_router(ConvertCodeIntoPseudoRouter, tags=["Convert Code into Pseudo Code"], prefix="/api/v1/convert")
 app.include_router(TranslateRouter, tags=["Translate Pseudo Code"], prefix="/api/v1/translate")
-app.include_router(TranslateRouter, tags=["Translate Pseudo Code"], prefix="/api/v1/translate")
+app.include_router(WarningsRouter, tags=["Warnings"], prefix="/api/v1/warnings")
 app.include_router(ShareCodeRouter, tags=["Share Code"], prefix="/api/v1/share")
 
 @app.get("/", tags=["Root"])

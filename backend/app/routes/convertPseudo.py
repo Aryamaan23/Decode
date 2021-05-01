@@ -7,5 +7,5 @@ router = APIRouter()
 
 
 @router.post("/", response_description="Convert Python Code into Pseudo Code")
-async def compile(source: str = Form(...)):
+async def pseudoCode(source: str = Form(...)):
     return convertCodeIntoPseudoCode(source)

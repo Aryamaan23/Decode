@@ -8,6 +8,12 @@ uvicorn = "*"
 fastapi = "*"
 python-decouple = "*"
 requests = "*"
+python-multipart = "*"
+google-trans-new = "*"
+pylint = "*"
+sqlalchemy = "*"
+databases = "*"
+aiosqlite = "*"
 
 [dev-packages]
 
