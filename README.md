@@ -6,7 +6,6 @@ Link to deployed URL - [Decode](https://decoding.surge.sh/) & [Backend API](http
 
 ![Decode architecture]
 
-
 ## Project Description
 
 Sometimes we write some code or we copy the code from some resource but we can’t interpret the working/logic behind the code. While writing the code when we get stuck in some problem, we directly redirect to StackOverflow or GitHub but from there we don’t get in-depth knowledge about the code.
@@ -21,21 +20,24 @@ The automatically generated pseudo code will act as a blueprint and will help ou
 
 You can share your code by clicking just a button. It will give a unique URL to your code to share with your friends, colleagues, or teachers.
 
-Test and Compile feature is also available on this website so that users can cross-check his / her output based on the input. 
+Test and Compile feature is available on this website so that users can cross-check his / her output based on the input.
 
+User will also get insight to memory and time consumption of the program.
 
 ## Mockups
 
-![ss1]
-![ss1]
-![ss1]
-![ss1]
-![ss1]
+![ss1](mockups/decode1.png)
+![ss2](mockups/decode2.png)
+![ss3](mockups/decode3.png)
+![ss4](mockups/decode4.png)
+![ss5](mockups/decode5.png)
 
 ## Presentation
+
 [PPT]
 
 ## Video
+
 [Video Presentation]
 
 ## Instructions
@@ -53,5 +55,5 @@ Python, ReactJS, TailwindCSS, Pylint, FastAPI, GoogleTranslator, Hackerearth API
 
 ## Contributors
 
-- [Aryamaan Pandey](https://github.com/Aryamaan23)
 - [Ankit Hans](https://github.com/ankithans)
+- [Aryamaan Pandey](https://github.com/Aryamaan23)
