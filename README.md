@@ -57,3 +57,4 @@ Python, ReactJS, TailwindCSS, Pylint, FastAPI, GoogleTranslator, Hackerearth API
 
 - [Ankit Hans](https://github.com/ankithans)
 - [Aryamaan Pandey](https://github.com/Aryamaan23)
+- [Adit Patel](https://github.com/aditpatel01)
