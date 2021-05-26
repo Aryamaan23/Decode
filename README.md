@@ -1,5 +1,8 @@
 # Decode
 
+## Achievements🏆
+Team Uhtred won the Runner's Up Prize at Rakathon 2021 organized by Rakuten India
+
 Link to deployed URL - [Decode](https://decoding.surge.sh/) & [Backend API](https://pseudo-x.herokuapp.com/redoc)
 
 [Decode](https://decoding.surge.sh/) is a platform which converts code into easy to understand language.
